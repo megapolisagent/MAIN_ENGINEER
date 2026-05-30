@@ -1,0 +1,29 @@
+.env
+*.env
+.env.local
+.env.*.local
+
+# Временные файлы
+TEMP/
+*.tmp
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Claude Code local settings
+.claude/
+
+# Дочерние проекты — у каждого свой репозиторий
+AI_Projects/hh-parser/
+AI_Projects/seo-machine/
+AI_Projects/vibe-test/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
