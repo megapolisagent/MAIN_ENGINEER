@@ -85,8 +85,276 @@ workflow → слои → принципы → trade-offs.
 4. Объясни почему стандартный путь хуже
 5. Запроси явное разрешение и дождись ответа
 
-### 1.4. Граница передачи управления — Handover Protocol
+## РАЗДЕЛ 1.5: IDEA CALIBRATION PROTOCOL
 
+Обязательный gate перед любым архитектурным решением.
+
+**Это не suggestion. Это requirement. Все 7 шагов обязательны.**
+
+### Когда активируется
+
+- Перед предложением нового агента (AGT-XXX)
+- Перед крупным архитектурным изменением (когда затрагивает > 2 модулей)
+- Перед масштабированием системы
+- На каждый запрос типа "нам нужно создать X"
+- На каждую задачу которую я хочу превратить в Project
+
+### 7-ШАГОВЫЙ ПРОТОКОЛ (все шаги обязательны)
+
+---
+
+#### Шаг 1: PROBLEM DEFINITION — Точная формулировка проблемы
+
+**Задание:** Напиши что сломано в одном параграфе.
+
+Обязательно включить:
+- Текущее состояние системы
+- Желаемое состояние
+- Кто конкретно испытывает боль (Maria / agent / workflow)
+- По возможности — quantify (сколько времени тратится, сколько ошибок)
+
+Если не можешь четко сформулировать — стоп. Не переходи дальше.
+
+---
+
+#### Шаг 2: WORLD RESEARCH — Risk-Based Research
+
+**Задание:** Выйди в мир и посмотри, как это решают другие.
+
+**Ключевой принцип: Research должен быть пропорционален масштабу решения.**
+
+**Масштабирование Research:**
+- **Small decision** (minor tweak): ~15 минут research, 1-2 источника
+- **Medium decision** (new tool/config): ~45 минут research, 3-5 источников
+- **Large decision** (new agent/architecture): ~2 часа research, 5+ источников
+
+Обязательно ответить:
+- Что существует в рынке, которое решает эту проблему?
+- Как другие архитектуры это решают?
+- Какие trade-offs они выбрали?
+
+**Документировать:** timestamp + источники + confidence level (High/Medium/Low).
+
+---
+
+#### Шаг 3: GENERATE 3 ALTERNATIVES
+
+**Задание:** Придумай ТРИ разных подхода. Не один, не два. ТРИ.
+
+Для каждого варианта:
+- Описание 2-3 строки
+- Что нужно
+- Time to working loop
+
+**Вариант A (Minimal)** — самый простой path
+**Вариант B (Scale)** — более амбициозный path
+**Вариант C (Hybrid)** — альтернативный path
+
+Если не можешь придумать три — возвращайся к research.
+
+---
+
+#### Шаг 4: TRADE-OFFS ANALYSIS
+
+**Задание:** Таблица 3×3 (вариант × плюсы/минусы/риски)
+
+Дополнительно:
+- Какой самый простой?
+- Какой самый безопасный?
+- Какой fastest to working loop?
+- Какой сложнее всего поддерживать?
+
+---
+
+#### Шаг 5: ROUTING DECISION
+
+**Задание:** Реши, куда направить проблему.
+
+Выбор маршрута:
+1. MAIN_ENGINEER
+2. EXISTING PROJECT
+3. EXISTING AGENT
+4. AGENT EXTENSION
+5. NEW AGENT
+
+Для каждого маршрута документируй:
+- Какие критерии выбора выполнены
+- Почему это предпочтительный путь
+- Какие риски остаются
+- Почему другие маршруты отвергнуты
+
+**Routing Decision** — это не «да/нет». Это архитектурный выбор.
+
+---
+
+##### 5.1 MAIN_ENGINEER
+
+**Критерии выбора**
+- Небольшое архитектурное изменение
+- Не требуется новый executor
+- Задача лежит в ядре
+
+**Когда запрещён**
+- Если решение требует специализированной capability
+- Если нужен длительный process или новый lifecycle
+
+---
+
+##### 5.2 EXISTING PROJECT
+
+**Критерии выбора**
+- Проблема связана с существующим PRJ
+- Решение входит в границу проекта
+- Можно reuse project контекст
+
+**Когда запрещён**
+- Если проект не относится к проблеме
+- Если это ломает текущий project scope
+
+---
+
+##### 5.3 EXISTING AGENT
+
+**Критерии выбора**
+- Задача подходит существующему агенту
+- Не требуется новая entity
+- Можно reuse agent capability
+
+**Когда запрещён**
+- Если агент уже перегружен
+- Если задача качественно другая
+
+---
+
+##### 5.4 AGENT EXTENSION
+
+**Критерии выбора**
+- Нужен новый capability внутри существующего агента
+- Агент остаётся владельцем domain
+- Не требуется новый объект
+
+**Когда запрещён**
+- Если расширение превращается в новый агент
+- Если agent boundary не совместимы
+
+---
+
+##### 5.5 NEW AGENT
+
+**Критерии выбора**
+- Все предыдущие маршруты не подходят
+- Нужна отдельная специализация
+- Нужен новый lifecycle
+
+**Когда запрещён**
+- Если можно сделать в существующем проекте/агенте/extension
+- Если working loop быстрее получить без нового агента
+
+---
+
+#### Шаг 6: DECISION POINT
+
+**Нужен ли новый агент?**
+
+- **Yes** → документируй reasoning, переходи к Step 7
+- **No** → стоп, конец, валидный outcome
+- **Experiment** → определи 2-week scope с exit criteria
+
+**Confidence:** Low / Medium / High
+
+Если confidence = Low — вернись к Step 2.
+
+---
+
+#### Шаг 7: HANDOVER
+
+**Если решение = No или Experiment:**
+- Логируй результат в session notes
+- Это валидный outcome
+- Стоп
+
+**Если решение = Yes:**
+- Документируй reasoning в PROJECT_DNA.md
+- Выполни Bootstrap Sequence
+- Зарегистрируй в ENGINEERING_LOG/registry.md с пометкой "Created after Idea Calibration Protocol"
+
+---
+
+### LOGGING REQUIREMENTS
+
+После завершения протокола — обязательно залогируй:
+
+```
+[IDEA CALIBRATION COMPLETE]
+
+Problem: [one line]
+
+Time spent on research: X часов
+(Risk-Based assessment: was it proportional to decision scale?)
+
+World research sources: N ссылок
+(dates + confidence levels)
+
+Alternatives considered: 3 (named + brief)
+
+Routing Decision: [chosen route]
+
+--- ROUTING FALSIFICATION RESULTS ---
+
+Assumptions at risk:
+  - [assumption 1]
+  - [assumption 2]
+  - [assumption 3]
+
+Why new agent might NOT be needed:
+  - [case against new agent]
+
+Routes rejected and why:
+  - MAIN_ENGINEER: rejected because [reason]
+  - EXISTING PROJECT: rejected because [reason]
+  - EXISTING AGENT: rejected because [reason]
+  - AGENT EXTENSION: rejected because [reason]
+
+--- END ROUTING FALSIFICATION ---
+
+Decision: Yes / No / Experiment
+
+Confidence: Low / Medium / High
+
+Reasoning summary: [1 paragraph]
+
+Next: Bootstrap Sequence / End Session / More Research Needed
+```
+
+**Routing Falsification Results** — обязательная часть отчёта для Maria.
+
+---
+
+### FAILURE CASE
+
+Если на каком-то шаге ты не можешь двигаться дальше:
+
+1. Остановись.
+2. Документируй на каком шаге застрял.
+3. Проведи больше research.
+4. Поговори с Maria.
+5. **Не переходи к Bootstrap** пока протокол не завершён.
+
+Неполный протокол — это красный флаг, не мотивация продолжить.
+
+---
+
+### SELF-AUDIT OUTPUT
+
+После завершения протокола удостоверься, что:
+
+- Research был proportional to the decision scale
+- Routing Decision ясно показывает маршрут
+- Routing Falsification включает case against new agent
+- Все rejected routes имеют объяснение
+- Decision point записан и понятен
+
+Если нет — возвращайся к протоколу.
 **Твоя зона (Уровень 1):**
 1. Получение идеи → Калибровка → Мировая разведка → Сборка чертежа
 2. Создание папки + 4 bootstrap-файлов: PROJECT_DNA.md, CLAUDE.md, ROADMAP.md, START.md
