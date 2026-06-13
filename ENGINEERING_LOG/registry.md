@@ -104,6 +104,20 @@
 
 ---
 
+### PRJ-006 · MAIN_ASSISTANT
+- **Тип:** System
+- **Путь:** `C:\Users\bogol\OneDrive\Рабочий стол\MAIN_ASSISTANT\`
+- **Задача:** Strategic Chief of Staff — Level 1 сиблинг MAIN_ENGINEER. Capture/Organize/Connect/Distill/Retrieve для решений и фокуса Марии вне AI-инженерии
+- **Pattern:** Distilled Inheritance от MAIN_ENGINEER_CORE + Read-only Source of Truth на registry.md (асимметричный Role Boundary)
+- **Stage:** S0 — Just Created (working loop не проверен)
+- **Приоритет:** HIGH
+- **Статус:** В работе
+- **Dependencies:** PRJ-001 (read-only)
+- **Last Verified:** 2026-06-13
+- **Дата регистрации:** 2026-06-13
+
+---
+
 ## ПРЕФИКСЫ ID
 
 | Тип актива | Префикс | Пример |

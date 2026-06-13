@@ -1,6 +1,6 @@
 ---
-Версия: 1.1
-Дата: 2026-05-29
+Версия: 1.2
+Дата: 2026-06-13
 Источник: https://github.com/megapolisagent/my-claude-arsenal
 Статус: АКТУАЛЬНЫЙ
 Связанные файлы: [[MAIN_ENGINEER.md]] | [[MARIA_PROFILE.md]]
@@ -10,7 +10,7 @@
 ## Реестр всех инструментов — Агентство недвижимости Москва
 
 > Живой документ. Обновляется при установке новых инструментов.
-> Claude читает этот файл при создании каждого нового агента.
+> Claude читает этот файл при срабатывании Capability Selection Trigger (Impact/Uncertainty/Complexity — см. [[MAIN_ENGINEER_CORE.md]] РАЗДЕЛ 1.5, Шаг 0), не только при создании нового агента.
 
 ---
 
@@ -227,4 +227,4 @@
 
 ---
 
-*SKILLS_REGISTRY v1.1 | Tool Priority Layer | 3 уровня | Anthropic Skill Rules | Синхронизирован с arsenal.md*
+*SKILLS_REGISTRY v1.2 | Tool Priority Layer | 3 уровня | Читается по CS Trigger (MAIN_ENGINEER_CORE Шаг 0) | Anthropic Skill Rules | Синхронизирован с arsenal.md*
