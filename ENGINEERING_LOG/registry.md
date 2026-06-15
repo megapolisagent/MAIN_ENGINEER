@@ -108,12 +108,12 @@
 - **Тип:** System
 - **Путь:** `C:\Users\bogol\OneDrive\Рабочий стол\MAIN_ASSISTANT\`
 - **Задача:** Strategic Chief of Staff — Level 1 сиблинг MAIN_ENGINEER. Capture/Organize/Connect/Distill/Retrieve для решений и фокуса Марии вне AI-инженерии
-- **Pattern:** Distilled Inheritance от MAIN_ENGINEER_CORE + Read-only Source of Truth на registry.md (асимметричный Role Boundary)
-- **Stage:** S0 — Just Created (working loop не проверен)
+- **Pattern:** Distilled Inheritance от MAIN_ENGINEER_CORE + Read-симметрия с MAIN_ENGINEER (вся система знаний Марии read-only) / Write-асимметрия (write только в собственную папку после подтверждения)
+- **Stage:** S0 — Just Created → S1 кандидат (working loop пройден на Мегаполисе; 2026-06-15: run 1 вскрыл Navigation Drift → CORE v1.3; run 2 подтвердил M2/M3 пробелы → CORE v1.4 Brand Voice Filter + Hand-off Protocol; gap analysis уточнил M3 как identity-defining → CORE v1.5 Mode 3 Active Questioning; run 3 sweep без anchor + run 4 успешный extraction-mode review с decision Марии «брокерский бизнес» → CORE v1.6 Strategic Cadence 2.6 Quarterly Goal & Anchor Decision; runs 5–6 выявили Self-Execution drift + Maria сформулировала Model B + добавила анти-Agentization Drift → CORE v1.7 раздел 2.7 Capability Routing с тремя режимами Mode A/B/C + AGENT_SPECS/ как зона памяти Mode B; v1.8 — две точечные калибровки от Марии: Mode B триггеры стали мягкими сигналами устойчивой потребности (не «3+ повторений»), Edge-Currency переписан без иерархии «выше/ниже» — три равных уровня ответственности в экосистеме; v1.9 — verification test выявил два gap в исполнении: Brand Voice Filter не распространялся явно на прямой диалог («вываливай» в Mode A) → 1.7 расширен симметрично + добавлена категория pseudo-intimacy; Mode 3 правило «один вопрос вместо трёх» не распространялось на Mode C (5 вопросов взамен диалога при сборе инженерных требований) → добавлен кросс-режимный принцип One Question Per Step в 1.5; v1.10 — третий gap из того же verification test: Mentor reflex в Mode C сработал в финале как «встречный на засыпку», не как входной gate (бизнес-ценность проверялась после сборки 5 implementation-вопросов) → 2.7 Правило 5 переписано из абстрактного «тот ли это маршрут» в конкретный per-mode gate с явными вопросами окупаемости)
 - **Приоритет:** HIGH
 - **Статус:** В работе
-- **Dependencies:** PRJ-001 (read-only)
-- **Last Verified:** 2026-06-13
+- **Dependencies:** PRJ-001 (read-only ко всей папке MAIN_ENGINEER)
+- **Last Verified:** 2026-06-15
 - **Дата регистрации:** 2026-06-13
 
 ---
