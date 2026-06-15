@@ -1,6 +1,6 @@
 ---
-Версия: 1.0
-Дата: 2026-06-13
+Версия: 1.1
+Дата: 2026-06-15
 Тип: Discovery Summary
 Статус: Активен
 Связанные файлы: [[MAIN_ENGINEER_CORE.md]] | [[MARIA_PROFILE.md]] | [[ENGINEERING_LOG/registry.md]] | [[OBSIDIAN_PROTOCOL.md]]
@@ -101,12 +101,17 @@ MAIN_ASSISTANT/
 
 ## 6. SUCCESS CRITERIA
 
+### Первый Working Loop (S0) — механика Capture → Distill → Retrieve
 - ✅ Мария регулярно (без напоминаний) выгружает мысли в разговоре с MAIN_ASSISTANT
 - ✅ Команда "зафиксируй" реально создаёт заметку, которую можно найти позже
 - ✅ MAIN_ASSISTANT по запросу напоминает прошлые решения ("вот что мы уже проходили")
-- ✅ Происходит хотя бы один реальный Challenge with Evidence — не декларация, а применённая проверка
 - ✅ Executive Briefing (STATE.md) даёт ценность при просмотре — карта внимания, а не пустой шаблон
+
+### После 3–5 сессий (когда накопится база в DECISIONS/STATE)
+- ✅ Происходит хотя бы один реальный Challenge with Evidence — не декларация, а применённая проверка
+
+> Перенесено из критериев первого loop (T13): на S0 STATE/DECISIONS пусты, улик для Challenge нет по построению. Первый loop оценивается только по механике Capture → Distill → Retrieve.
 
 ---
 
-*MAIN_ASSISTANT_DISCOVERY v1.0 | История Discovery до Stage S0 | Не CORE, не постоянная память*
+*MAIN_ASSISTANT_DISCOVERY v1.1 | История Discovery до Stage S0 | Не CORE, не постоянная память*
